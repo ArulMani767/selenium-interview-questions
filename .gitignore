@@ -19,3 +19,6 @@ Thumbs.db
 
 # Allure CLI cache
 .allure/
+
+# Allure test results (regenerated on every run)
+allure-results/
