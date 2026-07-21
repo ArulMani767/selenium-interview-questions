@@ -149,8 +149,28 @@ public class XPathMasteryTest extends TestBase {
         );
 
         // Print confirmations to verify successful locator evaluation
-        System.out.println("Page Heading: " + exactText.getText());
-        System.out.println("Sub-heading: " + containsText.getText());
-        System.out.println("Parent Div Class: " + parentAxis.getAttribute("class"));
+        System.out.println("1. Basic attribute value: " + basicXpath.getAttribute("value"));
+        System.out.println("2. Exact text: " + exactText.getText());
+        System.out.println("2. Contains text: " + containsText.getText());
+        System.out.println("2. Starts-with text: " + startsWithText.getText());
+        System.out.println("2. Normalized text: " + normalizedText.getText());
+        System.out.println("3. Contains attribute (class): " + containsAttr.getAttribute("class"));
+        System.out.println("3. Starts-with attribute (name): " + startsWithAttr.getAttribute("name"));
+        System.out.println("4. AND operator element name: " + andOperator.getAttribute("name"));
+        System.out.println("4. OR operator element type: " + orOperator.getAttribute("type"));
+        System.out.println("4. NOT operator element type: " + notOperator.getAttribute("type"));
+        System.out.println("5. Position first id: " + positionFirst.getAttribute("id"));
+        System.out.println("5. Grouped index id: " + groupedIndex.getAttribute("id"));
+        System.out.println("5. Position last id: " + positionLast.getAttribute("id"));
+        System.out.println("6. Any tag wildcard id: " + anyTag.getAttribute("id"));
+        System.out.println("6. Any attribute wildcard id: " + anyAttr.getAttribute("id"));
+        System.out.println("7. Parent axis class: " + parentAxis.getAttribute("class"));
+        System.out.println("7. Child axis tag name: " + childAxis.getTagName());
+        System.out.println("7. Ancestor axis tag name: " + ancestorAxis.getTagName());
+        System.out.println("7. Descendant axis type: " + descendantAxis.getAttribute("type"));
+        System.out.println("8. Following sibling tag name: " + followingSibling.getTagName());
+        System.out.println("8. Preceding sibling text: " + precedingSibling.getText());
+        System.out.println("8. Following node tag name: " + followingNode.getTagName());
+        System.out.println("8. Preceding node tag name: " + precedingNode.getTagName());
     }
 }
