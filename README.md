@@ -6,18 +6,16 @@ Java + Selenium WebDriver programs covering common automation testing scenarios 
 
 ```
 selenium-interview-questions/
+├── .github/
+├── .vscode/
+├── .gitignore
 └── important-selenium-programs/
     ├── src/
-    │   ├── main/java/com/automation/pages/   ← Page Object classes
-    │   │   └── LoginPage.java
-    │   └── test/java/com/automation/         ← Test classes (30+ files)
-    │       ├── BrokenLinksTest.java
-    │       ├── FrameSwitchTest.java
-    │       ├── FluentWaitTest.java
-    │       └── ... (more programs)
-    │
+    │   ├── main/java/com/automation/pages/   ← Page Object classes (LoginPage.java)
+    │   └── test/java/com/automation/         ← Test classes (30+ files: BrokenLinksTest, FrameSwitchTest, etc.)
     ├── target/                               ← Compiled output
     └── pom.xml                               ← Maven configuration
+    
 ```
 
 > **Note:** The actual Maven project lives inside `important-selenium-programs/`, not the repository root. Always open/import that folder in your IDE.
