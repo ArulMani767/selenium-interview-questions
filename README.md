@@ -9,22 +9,17 @@ selenium-interview-questions/
 ├── .github/
 ├── .vscode/
 ├── .gitignore
-└── important-selenium-programs/
-    ├── src/
-    │   ├── main/java/com/automation/pages/   ← Page Object classes (LoginPage.java)
-    │   └── test/java/com/automation/         ← Test classes (30+ files: BrokenLinksTest, FrameSwitchTest, etc.)
-    ├── target/                               ← Compiled output
-    └── pom.xml                               ← Maven configuration
-    
+├── pom.xml                               ← Maven configuration
+└── src/
+    ├── main/java/com/automation/pages/   ← Page Object classes (LoginPage.java)
+    └── test/java/com/automation/         ← Test classes (30+ files: BrokenLinksTest, FrameSwitchTest, etc.)
 ```
-
-> **Note:** The actual Maven project lives inside `important-selenium-programs/`, not the repository root. Always open/import that folder in your IDE.
 
 ---
 
 ## Prerequisites
 
-- **Java 21 or higher** — [Download Amazon Corretto](https://docs.aws.amazon.com/corretto/)
+- **Java 21 or higher** — [Download Amazon Corretto](https://aws.amazon.com/corretto/)
 - **Maven 3.9+** — [Download Maven](https://maven.apache.org/download.cgi)
 - **Git** — [Download Git](https://git-scm.com/downloads)
 - **Google Chrome** (latest) — [Download Chrome](https://www.google.com/chrome/)
@@ -39,6 +34,7 @@ We recommend **Amazon Corretto** over Oracle JDK since it's free for personal an
 |---|---|---|
 | **Selenium Java** | 4.45.0 | Browser automation framework |
 | **TestNG** | 7.12.0 | Test framework |
+| **Allure TestNG** | 2.35.3 | Test reporting (HTML dashboards, step details, history) |
 
 All dependencies are configured in `pom.xml` for automatic download.
 
@@ -49,7 +45,7 @@ All dependencies are configured in `pom.xml` for automatic download.
 ### 1. Clone the Project
 ```bash
 git clone https://github.com/ArulMani767/selenium-interview-questions.git
-cd selenium-interview-questions/important-selenium-programs
+cd selenium-interview-questions
 ```
 
 ### 2. Build with Maven
@@ -87,7 +83,7 @@ https://github.com/ArulMani767/selenium-interview-questions.git
 4. Enter your GitHub **username** and **Personal Access Token** as the password → Next
 5. Select branch **main** → Next
 6. Choose a local directory → Next
-7. Eclipse detects the project type — when prompted, **import as an existing Maven project** and point it to the `important-selenium-programs` folder → **Finish**
+7. Eclipse detects the project type — when prompted, **import as an existing Maven project** → **Finish**
 
 ---
 
@@ -102,8 +98,7 @@ https://github.com/ArulMani767/selenium-interview-questions.git
 > ⚠️ Paste only in the URL field. The directory field will auto-fill — do not modify it unless you want a custom save location.
 
 3. Click **Clone**
-4. When IntelliJ finishes cloning, open the **`important-selenium-programs`** subfolder specifically (not the repo root)
-5. Click **Open as Maven Project** when prompted → Done
+4. Click **Open as Maven Project** when prompted → Done
 
 ---
 
@@ -115,7 +110,7 @@ https://github.com/ArulMani767/selenium-interview-questions.git
 https://github.com/ArulMani767/selenium-interview-questions.git
 ```
 3. Press **Enter** → choose a local folder to clone into
-4. When prompted to open the folder, browse into it and select the **`important-selenium-programs`** subfolder
+4. Click **Open** when prompted
 5. Install **Extension Pack for Java** if not already installed
 6. VS Code auto-detects Maven and sets up the project — wait for the bottom-right status bar to finish loading → Done
 
@@ -131,8 +126,7 @@ https://github.com/ArulMani767/selenium-interview-questions.git
 
 > ⚠️ Paste only in the URL field — do not click into other fields before pasting.
 
-3. Click **Clone**
-4. Open the **`important-selenium-programs`** subfolder as the project root → Done
+3. Click **Clone** → Done
 
 ---
 
@@ -145,6 +139,24 @@ https://github.com/ArulMani767/selenium-interview-questions.git
 mvn test -Dtest=BrokenLinksTest
 ```
 Replace `BrokenLinksTest` with any test class name from the project.
+
+---
+
+## Viewing the Allure Report
+
+After running one or more tests (from the IDE or terminal), a results folder is generated at the project root. To view a full HTML report:
+
+```bash
+mvn allure:serve
+```
+
+This builds the report and opens it automatically in your browser. Re-run this command any time after new test runs to see updated results — it does not auto-refresh on its own.
+
+To clear old results before a fresh run:
+```bash
+# Windows PowerShell
+if (Test-Path 'allure-results') { Remove-Item -Recurse -Force 'allure-results' }
+```
 
 ---
 
@@ -172,6 +184,7 @@ mvn package
 | Import errors in IDE | Run `mvn clean install`, then clean/restart the IDE's language server |
 | Java version error | Install JDK 21 or higher |
 | Missing artifact `selenium-java` | Check `pom.xml` groupId is `org.seleniumhq.selenium` (not `org.openqa.selenium`) |
+| `mvn allure:serve` says results directory not found | Run at least one test first — the report has nothing to show until `allure-results/` exists |
 
 ---
 
@@ -189,10 +202,16 @@ mvn package
 - Easy IDE integration
 - Selenium 4.6+ auto-manages the browser driver — no manual ChromeDriver download needed
 
+✅ **Allure Test Reporting**
+- Interactive HTML dashboards with pass/fail breakdowns
+- Step-level detail and attachments
+- One-command report generation via `mvn allure:serve`
+
 ---
 
 ## Learn More
 
 - [Selenium Documentation](https://www.selenium.dev/documentation/)
 - [TestNG Documentation](https://testng.org/doc/)
+- [Allure Report Documentation](https://allurereport.org/docs/)
 - [Maven Guide](https://maven.apache.org/guides/)
