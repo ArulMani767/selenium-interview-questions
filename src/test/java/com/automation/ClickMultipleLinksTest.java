@@ -11,9 +11,9 @@ public class ClickMultipleLinksTest extends TestBase {
 
         for (int i = 0; i < 5; i++) {
             var links = driver.findElements(By.cssSelector("span.titleline > a"));
-            if (i >= links.size())
+            if (i >= links.size()){
                 break;
-
+        }
             System.out.println("Clicking: " + links.get(i).getText());
             links.get(i).click();
             driver.navigate().back();
